@@ -1,5 +1,5 @@
 {
-    "name": "phpdbo/phpdbo-composer",
+    "name": "php-dbo/dbconnection",
     "description": "My first packagist package",
     "type": "package",
     "require": {
