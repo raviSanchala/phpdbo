@@ -1,0 +1,21 @@
+{
+    "name": "phpdbo/phpdbo-composer",
+    "description": "My first packagist package",
+    "type": "package",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "license": "mit",
+    "authors": [
+        {
+            "name": "Ravi sanchala",
+            "email": "ravi_sanchala@live.com",
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "phpdbo\\phpdbo\\": "src/"
+        }
+    }
+}
