@@ -15,7 +15,7 @@
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "phpdbo\\phpdbo\\": "src/"
+            "phpdbo\\dbconnection\\": "pdodb/"
         }
     }
 }
