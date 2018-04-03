@@ -1,4 +1,7 @@
 <?php
+
+namespace phpdbo\dbconnection;
+
 class dbconnection
 {
 	private static $server = 'server name';
