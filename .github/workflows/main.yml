@@ -1,51 +1,20 @@
-name: SonarCloud Scan
-
+name: Build
 on:
   push:
     branches:
-      - master  # Adjust branch name if needed
+      - master
   pull_request:
-    branches:
-      - master  # Adjust branch name if needed
-
+    types: [opened, synchronize, reopened]
 jobs:
-  sonarcloud_scan:
-    name: SonarCloud Scan
+  sonarcloud:
+    name: SonarCloud
     runs-on: ubuntu-latest
-
     steps:
-      - name: Set up Java 8
-        uses: actions/setup-java@v2
+      - uses: actions/checkout@v3
         with:
-          distribution: 'adopt'
-          java-version: '8'
-      
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
       - name: SonarCloud Scan
-        run: |
-          wget -q -O sonar-scanner.zip "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-5.0.1.3006-linux.zip"
-          ls -l
-          unzip -q sonar-scanner.zip
-          echo "-------+++++++"
-          ls -l /home/runner/work/
-          echo "-------"
-          ls -l /home/runner/work/phpdbo/phpdbo/
-          echo "++++++++"
-          ls -l /home/runner/work/phpdbo/phpdbo/sonar-scanner-5.0.1.3006-linux/
-          echo "========="
-          ls -l $RUNNER_WORKSPACE
-          echo "++++++++++++==="
-          export PATH=$PATH:$RUNNER_WORKSPACE/phpdbo/sonar-scanner-5.0.1.3006-linux/bin/
-          $RUNNER_WORKSPACE/phpdbo/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner --version
-          $RUNNER_WORKSPACE/phpdbo/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner \
-            -Dsonar.organization=testsonnarforgithubravi \
-            -Dsonar.projectKey=testsonnarforgithubravi_testsonnarforgithubravi \
-            -Dsonar.sources=. \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.plugins.disabled=python \
-            -Dsonar.inclusions=**/*.tf
-
-      - name: Upload SonarCloud Quality Gate status
-        if: always()
-        uses: github/codeql-action/upload-sarif@v1
-        with:
-          sarif_file: build/reports/sonar/sonar-report.json
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: c4e60658667dddab155712f813caebae221c266d
