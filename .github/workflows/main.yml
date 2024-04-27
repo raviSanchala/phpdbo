@@ -32,8 +32,10 @@ jobs:
           echo "++++++++"
           ls -l /home/runner/work/phpdbo/phpdbo/sonar-scanner-5.0.1.3006-linux/
           echo "========="
-          export PATH=$PATH:$RUNNER_WORKSPACE/sonar-scanner-cli-5.0.1.3006-linux/bin/
-          $RUNNER_WORKSPACE/sonar-scanner-cli-5.0.1.3006-linux/bin/sonar-scanner --version
+          ls -l $RUNNER_WORKSPACE
+          echo "++++++++++++==="
+          export PATH=$PATH:$RUNNER_WORKSPACE/phpdbo/phpdbo/sonar-scanner-5.0.1.3006-linux/bin/
+          $RUNNER_WORKSPACE/phpdbo/phpdbo/sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner --version
           $RUNNER_WORKSPACE/sonar-scanner-cli-5.0.1.3006-linux/bin/sonar-scanner \
             -Dsonar.organization=testsonnarforgithubravi \
             -Dsonar.projectKey=testsonnarforgithubravi_testsonnarforgithubravi \
