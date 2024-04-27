@@ -25,7 +25,7 @@ jobs:
           # Install TFLint if not already installed
           curl -sSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
           # Run TFLint analysis on Terraform code and generate a JSON report
-          tflint --chdir=./terraform --format=json > tflint-report.json || cat tflint-report.json
+          tflint --chdir=./ --format=json > tflint-report.json || cat tflint-report.json
 
           
       - name: SonarCloud Scan
