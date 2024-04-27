@@ -20,9 +20,11 @@ jobs:
           tflint --version
           #tflint --format json . > ./tflint-report.json
 
-      # - name: Run TFLint and generate report
-      #   run: |
-      #     tflint --format json --out tflint-report.json
+      - name: Install TFLint
+        run: |
+          curl -sSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+          tflint --version
+
           
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
