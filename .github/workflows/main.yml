@@ -28,10 +28,10 @@ jobs:
           echo "-------+++++++"
           ls -l /home/runner/work/
           echo "-------"
-          ls -l /home/runner/work/sonar-scanner-cli-5.0.1.3006-linux/
-          echo "========="
           ls -l /home/runner/work/phpdbo/
           echo "++++++++"
+          ls -l /home/runner/work/sonar-scanner-cli-5.0.1.3006-linux/
+          echo "========="
           export PATH=$PATH:$RUNNER_WORKSPACE/sonar-scanner-cli-5.0.1.3006-linux/bin/
           $RUNNER_WORKSPACE/sonar-scanner-cli-5.0.1.3006-linux/bin/sonar-scanner --version
           $RUNNER_WORKSPACE/sonar-scanner-cli-5.0.1.3006-linux/bin/sonar-scanner \
