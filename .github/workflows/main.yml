@@ -41,3 +41,9 @@ jobs:
       - name: Show TFLint Report
         run: |
           cat ./tflint-report.sarif
+
+      
+      - name: Upload SARIF Report
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: ./tflint-report.sarif
