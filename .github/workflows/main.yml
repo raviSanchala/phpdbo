@@ -31,7 +31,8 @@ jobs:
           SONAR_PROJECT_KEY: ravisanchala_testingscanner
           SONAR_ORGANIZATION: ravisanchala
           SONAR_TERRAFORM_TFLINT_REPORT_PATHS: ./tflint-report.json
-
+      - name: Debug Current Directory
+        run: ls -l
       - name: Show TFLint Report
         run: |
           cat ./tflint-report.json
