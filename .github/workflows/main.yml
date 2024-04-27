@@ -34,4 +34,4 @@ jobs:
 
       - name: Show TFLint Report
         run: |
-          cat tflint-report.json
+          cat ./tflint-report.json
