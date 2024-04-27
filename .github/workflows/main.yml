@@ -18,7 +18,7 @@ jobs:
         run: |
           curl -sSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
           tflint --version
-          tflint --format json . > tflint-report.json
+          tflint --format json . > ./tflint-report.json
 
       # - name: Run TFLint and generate report
       #   run: |
