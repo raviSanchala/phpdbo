@@ -25,7 +25,7 @@ jobs:
           # Install TFLint if not already installed
           curl -sSL https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
           # Run TFLint analysis on Terraform code and generate a JSON report
-          tflint --chdir=./ --format=json > tflint-report.json || cat tflint-report.json
+          tflint --chdir=./ --format=sarif > tflint-report.sarif || cat tflint-report.sarif
 
           
       - name: SonarCloud Scan
@@ -35,9 +35,9 @@ jobs:
           SONAR_TOKEN: c4e60658667dddab155712f813caebae221c266d
           SONAR_PROJECT_KEY: ravisanchala_testingscanner
           SONAR_ORGANIZATION: ravisanchala
-          SONAR_TERRAFORM_TFLINT_REPORT_PATHS: ./tflint-report.json
+          SONAR_TERRAFORM_TFLINT_REPORT_PATHS: ./tflint-report.sarif
       - name: Debug Current Directory
         run: ls -l ./
       - name: Show TFLint Report
         run: |
-          cat ./tflint-report.json
+          cat ./tflint-report.sarif
