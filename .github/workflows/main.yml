@@ -18,3 +18,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: c4e60658667dddab155712f813caebae221c266d
+          SONAR_PROJECT_KEY: ravisanchala_testingscanner
+          SONAR_ORGANIZATION: ravisanchala
