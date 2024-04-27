@@ -1,0 +1,41 @@
+name: SonarCloud Scan
+
+on:
+  push:
+    branches:
+      - master  # Adjust branch name if needed
+  pull_request:
+    branches:
+      - master  # Adjust branch name if needed
+
+jobs:
+  sonarcloud_scan:
+    name: SonarCloud Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Java 8
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '8'
+      
+      - name: SonarCloud Scan
+        run: |
+          wget -q -O sonar-scanner.zip "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip"
+          unzip -q sonar-scanner.zip
+          export PATH=$PATH:$RUNNER_WORKSPACE/PyMYSQL-class/sonar-scanner-4.7.0.2747-linux/bin/
+          $RUNNER_WORKSPACE/PyMYSQL-class/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner --version
+          $RUNNER_WORKSPACE/PyMYSQL-class/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
+            -Dsonar.organization=testsonnarforgithubravi \
+            -Dsonar.projectKey=testsonnarforgithubravi_testsonnarforgithubravi \
+            -Dsonar.sources=. \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.plugins.disabled=python \
+            -Dsonar.inclusions=**/*.tf
+
+      - name: Upload SonarCloud Quality Gate status
+        if: always()
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: build/reports/sonar/sonar-report.json
