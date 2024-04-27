@@ -24,9 +24,9 @@ jobs:
         run: |
           wget -q -O sonar-scanner.zip "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip"
           unzip -q sonar-scanner.zip
-          export PATH=$PATH:$RUNNER_WORKSPACE/PyMYSQL-class/sonar-scanner-4.7.0.2747-linux/bin/
-          $RUNNER_WORKSPACE/PyMYSQL-class/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner --version
-          $RUNNER_WORKSPACE/PyMYSQL-class/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
+          export PATH=$PATH:$RUNNER_WORKSPACE/phpdbo/sonar-scanner-4.7.0.2747-linux/bin/
+          $RUNNER_WORKSPACE/phpdbo/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner --version
+          $RUNNER_WORKSPACE/phpdbo/sonar-scanner-4.7.0.2747-linux/bin/sonar-scanner \
             -Dsonar.organization=testsonnarforgithubravi \
             -Dsonar.projectKey=testsonnarforgithubravi_testsonnarforgithubravi \
             -Dsonar.sources=. \
